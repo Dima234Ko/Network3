@@ -14,11 +14,14 @@ public class IP {
         String newIP;
         int lastNumber = -1;
 
+
         if (city == 1) {
             cell = book.getSheetAt(0).getRow(1).getCell(2);
+
         } else if (city == 2) {
             cell = book.getSheetAt(0).getRow(2).getCell(2);
         }
+
 
         lastIP = String.valueOf(Exel.getCellText(cell));
         int index = lastIP.lastIndexOf(".");
@@ -27,7 +30,5 @@ public class IP {
 
         Exel.setCellText(cell, newIP);
         return newIP;
-
     }
-
 }
