@@ -16,25 +16,16 @@ public class Main {
     public static void main(String[] args) {
         String lastIP;
 
-        Workbook book;
-        FileInputStream fis;
-        try {
-            fis = new FileInputStream("filename.xls");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Workbook book =
 
-        try {
-            book = new HSSFWorkbook(fis);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-        lastIP = String.valueOf(getCellText(book.getSheetAt(0).getRow(0).getCell(0)));
+        lastIP = IP.installLastIP(book);
 
-        setNewIP(book, lastIP);
+        System.out.println(lastIP);
 
-        write(book, fis);
+        setCellText(book, lastIP);
+
+       // write(book, fis);
 
 
         //   System.out.println(lastIP);
@@ -74,7 +65,7 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
-    public static void setNewIP (Workbook book, String lastIP){
+    public static void setCellText (Workbook book, String lastIP){
         Row row;
         Cell cell;
 
@@ -83,4 +74,8 @@ public class Main {
         cell = row.createCell(0, CellType.STRING);
         cell.setCellValue(lastIP + 1);
     }
+
+
+
+
 }
