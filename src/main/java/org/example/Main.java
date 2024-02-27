@@ -10,70 +10,54 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String lastIP;
 
-        Workbook book =
+        Workbook book;
+        String NewIP;
+        FileInputStream fis;
+
+        Exel exel = new Exel();
+        book = exel.getBook();
+        fis = exel.getFis();
+
+        while (true) {
+        System.out.println("Выберите населенный пункт где нужно выделить интерфейс \n" +
+                "1 - Западная Якутия \n" +
+        "2 - Костромская область");
+        Scanner scanner = new Scanner(System.in);
+        int city = Integer.parseInt(scanner.nextLine());
+
+        IP ip = new IP();
+        NewIP = ip.installNewIP(city, book);
 
 
-        lastIP = IP.installLastIP(book);
 
-        System.out.println(lastIP);
+        System.out.println("Уточните населенный пункт из списка");
+        System.out.println(Arrays.toString(Country.values()));
+        Scanner scannerCountry = new Scanner(System.in);
+        String country = scannerCountry.nextLine();
 
-        setCellText(book, lastIP);
+        Vlan vlan = new Vlan();
 
-       // write(book, fis);
-
-
-        //   System.out.println(lastIP);
-
-
-
-    }
-
-    public static String getCellText(Cell cell) {
-
-                switch (cell.getCellType()) {
-                    case STRING:
-                        return cell.getRichStringCellValue().getString();
-                    case NUMERIC:
-                        if (DateUtil.isCellDateFormatted(cell)) {
-                            return String.valueOf(cell.getDateCellValue());
-                        } else {
-                            return String.valueOf(cell.getNumericCellValue());
-                        }
-                    case BOOLEAN:
-                        return String.valueOf(cell.getBooleanCellValue());
-                    case FORMULA:
-                        return String.valueOf(cell.getCellFormula());
+        if (country.equals("Мантурово")){
+            Country thisCountry = Country.Мантурово;
+            vlan.getVlan(thisCountry);
         }
-        return null;
-    }
-    public static void write(Workbook book, FileInputStream fis){
-        //Записать и закрыть
-        try (FileOutputStream out = new FileOutputStream(new File("filename.xls"))) {
-            book.write(out);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            fis.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public static void setCellText (Workbook book, String lastIP){
-        Row row;
-        Cell cell;
 
-        Sheet sheet1 = book.getSheet("Лист1");
-        row = sheet1.createRow(0);
-        cell = row.createCell(0, CellType.STRING);
-        cell.setCellValue(lastIP + 1);
+            System.out.println(NewIP);
+            Exel.write(book, fis);
+        }
+
     }
+
+
+
+
 
 
 
