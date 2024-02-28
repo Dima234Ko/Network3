@@ -2,11 +2,20 @@ package org.example;
 
 public class Vlan {
 
-public String getVlan(Country thisCountry) {
-    if (thisCountry == Country.Мантурово) {
-        System.out.println("Ура!!!");
-    } else
-        System.out.println("Хуита");
+public String getVlan(String country) {
+
+
+
+    switch (country) {
+        case ("Мантурово"):
+            System.out.println("Верно");
+
+            break;
+        default:
+            System.out.println("Не верно");
+
+            break;
+    }
 
     return null;
 }

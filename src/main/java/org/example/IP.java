@@ -6,7 +6,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 public class IP {
 
-    public String installNewIP (int city, Workbook book) {
+    public String installNewIP (String city, Workbook book) {
 
         Cell cell = null;
         int numberStart = -1;
@@ -15,10 +15,9 @@ public class IP {
         int lastNumber = -1;
 
 
-        if (city == 1) {
+        if (city.equals("Западная Якутия")) {
             cell = book.getSheetAt(0).getRow(1).getCell(2);
-
-        } else if (city == 2) {
+        } else  {
             cell = book.getSheetAt(0).getRow(2).getCell(2);
         }
 
