@@ -63,6 +63,8 @@ public class Cisco {
 
     public String getInterfaceCisco(String City){
 
+        System.out.println("");
+
         if (City.equals("Западная Якутия")) {
             interfaceCisco = "TenGigabitEthernet0/0/0";
         } else
