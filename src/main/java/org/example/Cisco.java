@@ -54,9 +54,9 @@ public class Cisco {
     public String getLoopback(String City) {
 
         if (City.equals("Западная Якутия")) {
-            loopback = "Loopback109236223";
-        } else
             loopback = "Loopback4619114";
+        } else
+            loopback = "Loopback109236223";
 
         return loopback;
     }

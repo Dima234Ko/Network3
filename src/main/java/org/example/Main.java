@@ -16,7 +16,7 @@ public class Main {
     static String City;
 
     public static void main(String[] args) {
-
+        while (true) {
         Exel exel = new Exel();
         book = exel.getBook();
         fis = exel.getFis();
@@ -45,11 +45,13 @@ public class Main {
         exel.setCellInt(cellVlan, NewVlan);
         // Записать новый Vlan
 
-        Cisco cisco = new Cisco();
-        cisco.requestResult(NewIP, QNQVlan, NewVlan, City);
-        //Сформировать команды Cisco
+            Cisco cisco = new Cisco();
+            cisco.requestResult(NewIP, QNQVlan, NewVlan, City);
+            //Сформировать команды Cisco
+            System.out.println("");
 
-        Exel.write(book, fis);
+        Exel.write(book, fis);}
+
         //Сохранить документ
 /*
         System.out.println(NewIP);

@@ -28,7 +28,7 @@ public class Polls {
                 System.out.println(Arrays.toString(Country.values()));
                 Scanner scannerCountry = new Scanner(System.in,"windows-1251");
                 city = scannerCountry.nextLine();
-                System.out.println(city);
+
                 /*Console console = System.console();
                 if(console!=null) {
                     city = console.readLine("Введите населенный пункт:");
