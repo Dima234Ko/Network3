@@ -80,7 +80,7 @@ public class Exel {
         Cell cell = null;
         Cell cell1 = null;
 
-        for (int i = 3; i < 16; i++) {
+        for (int i = 1; i < 16; i++) {
             cell = book.getSheetAt(0).getRow(i).getCell(0);
             String text = String.valueOf(Exel.getCellText(cell));
 

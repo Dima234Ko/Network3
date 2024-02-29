@@ -16,7 +16,7 @@ public class Polls {
 
             city = getRegion();
 
-            if (city.equals("Костромская обсласть")) {
+            if (city.equals("Костромская область")) {
                 QNQ = yesQNQ();
             } else
                 break;
@@ -27,8 +27,6 @@ public class Polls {
                 System.out.println(Arrays.toString(Country.values()));
                 Scanner scannerCountry = new Scanner(System.in);
                 city = scannerCountry.nextLine();
-                NumberQNQ = getQnqVlan(city);
-                System.out.println(NumberQNQ);
                 break;
             } else
                 break;
@@ -49,7 +47,7 @@ public class Polls {
                 city = "Западная Якутия";
                 return city;
             } else if (city.equals("2")) {
-                city = "Костромская обсласть";
+                city = "Костромская область";
                 return city;
             } else
                 System.out.println("Введите верное значение");
@@ -63,13 +61,13 @@ public class Polls {
             case ("Мантурово"):
                 QNQVlan = Country.Мантурово.getVlan();
                 break;
+
             case ("Нерехта"):
                 QNQVlan = Country.Нерехта.getVlan();
                 break;
 
             case ("Макарьев"):
-                System.out.println("Макарьев");
-                QNQVlan = Country.Мантурово.getVlan();
+                QNQVlan = Country.Макарьев.getVlan();
                 break;
 
             case ("Вохма"):
@@ -104,8 +102,7 @@ public class Polls {
                 QNQVlan = Country.Кологрив.getVlan();
                 break;
             default:
-                System.out.println("Введите верное значение");
-                QNQVlan = "Ошибка";
+                QNQVlan = "Не найден";
                 break;
         }
 

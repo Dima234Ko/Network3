@@ -28,9 +28,11 @@ public class Main {
         IP ip = new IP();
         NewIP = ip.installNewIP(City, book);
 
-        Vlan vlan = new Vlan();
-        QNQVlan = city.getQnqVlan(City);
-        //Получаем QNQ Vlan
+
+        if (!City.equals("Западная Якутия")|!City.equals("Костромская область")) {
+            QNQVlan = city.getQnqVlan(City);
+            //Получаем QNQ Vlan
+        }
 
         Cell cellVlan = exel.searchCell(book,City);
         // Получаем Ячейку с Vlan
@@ -38,11 +40,13 @@ public class Main {
         String Vlan = Exel.getTextCell(cellVlan);
         // Получаем последний использованный Vlan из таблицы
 
+        Vlan vlan = new Vlan();
         String NewVlan = vlan.getNewVlan(Vlan);
         // Получаем новый Vlan
 
 
         System.out.println(NewIP);
+        System.out.println("QNQ Vlan: " + QNQVlan);
         System.out.println("Последний Vlan: " + Vlan);
         System.out.println("Новый Vlan: " + NewVlan);
         Exel.write(book, fis);
