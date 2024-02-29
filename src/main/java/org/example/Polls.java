@@ -63,6 +63,46 @@ public class Polls {
             case ("Мантурово"):
                 QNQVlan = Country.Мантурово.getVlan();
                 break;
+            case ("Нерехта"):
+                QNQVlan = Country.Нерехта.getVlan();
+                break;
+
+            case ("Макарьев"):
+                System.out.println("Макарьев");
+                QNQVlan = Country.Мантурово.getVlan();
+                break;
+
+            case ("Вохма"):
+                QNQVlan = Country.Вохма.getVlan();
+                break;
+
+            case ("Поназырево"):
+                QNQVlan = Country.Поназырево.getVlan();
+                break;
+
+            case ("Галич"):
+                QNQVlan = Country.Галич.getVlan();
+                break;
+
+            case ("Солигалич"):
+                QNQVlan = Country.Солигалич.getVlan();
+                break;
+
+            case ("Межа"):
+                QNQVlan = Country.Межа.getVlan();
+                break;
+
+            case ("Шарья"):
+                QNQVlan = Country.Шарья.getVlan();
+                break;
+
+            case ("Павино"):
+                QNQVlan = Country.Павино.getVlan();
+                break;
+
+            case ("Кологрив"):
+                QNQVlan = Country.Кологрив.getVlan();
+                break;
             default:
                 System.out.println("Введите верное значение");
                 QNQVlan = "Ошибка";

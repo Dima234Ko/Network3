@@ -2,8 +2,11 @@ package org.example;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.text.DecimalFormat;
 
 public class Exel {
 
@@ -68,8 +71,34 @@ public class Exel {
         return null;
     }
 
-    public static void setCellText (Cell cell, String newIP){
-        cell.setCellValue(newIP);
+    public static void setCellText (Cell cell, String text){
+        cell.setCellValue(text);
     }
+
+    public static Cell searchCell (Workbook book, String city) {
+
+        Cell cell = null;
+        Cell cell1 = null;
+
+        for (int i = 3; i < 16; i++) {
+            cell = book.getSheetAt(0).getRow(i).getCell(0);
+            String text = String.valueOf(Exel.getCellText(cell));
+
+            if (city.equals(text)) {
+                cell1 = book.getSheetAt(0).getRow(i).getCell(1);
+                break;
+            }
+        }
+        return cell1;
+    }
+
+
+    public static String getTextCell (Cell cellVlan) {
+        String LastVlan = String.valueOf(Exel.getCellText(cellVlan));
+        int index = LastVlan.lastIndexOf(".");
+        LastVlan = LastVlan.substring(0, index);
+        return LastVlan;
+    }
+
 
 }

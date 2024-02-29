@@ -11,11 +11,9 @@ public class Main {
 
     static Workbook book;
     static String NewIP;
-    static String NewVlan;
+    static String QNQVlan;
     static FileInputStream fis;
     static String City;
-
-
 
     public static void main(String[] args) {
 
@@ -31,9 +29,22 @@ public class Main {
         NewIP = ip.installNewIP(City, book);
 
         Vlan vlan = new Vlan();
-        NewVlan = vlan.getVlan(City);
+        QNQVlan = city.getQnqVlan(City);
+        //Получаем QNQ Vlan
+
+        Cell cellVlan = exel.searchCell(book,City);
+        // Получаем Ячейку с Vlan
+
+        String Vlan = Exel.getTextCell(cellVlan);
+        // Получаем последний использованный Vlan из таблицы
+
+        String NewVlan = vlan.getNewVlan(Vlan);
+        // Получаем новый Vlan
+
 
         System.out.println(NewIP);
+        System.out.println("Последний Vlan: " + Vlan);
+        System.out.println("Новый Vlan: " + NewVlan);
         Exel.write(book, fis);
 
     }

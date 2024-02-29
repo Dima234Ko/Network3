@@ -1,22 +1,17 @@
 package org.example;
 
+import org.apache.poi.ss.usermodel.Workbook;
+
 public class Vlan {
 
-public String getVlan(String country) {
+public String getNewVlan (String Vlan) {
 
+    int NewVlan = Integer.parseInt(Vlan) + 1;
+    Vlan = Integer.toString(NewVlan);
+    return Vlan;
 
-
-    switch (country) {
-        case ("Мантурово"):
-            System.out.println("Верно");
-
-            break;
-        default:
-            System.out.println("Не верно");
-
-            break;
-    }
-
-    return null;
 }
+
+
+
 }
