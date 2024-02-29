@@ -40,7 +40,7 @@ public class Cisco {
 
     public void printNoQNQ (String NewIP, String NewVlan, String loopback) {
 
-        System.out.println("interface TenGigabitEthernet0/0/1." + NewVlan + "\n" +
+        System.out.println(interfaceCisco + "." + NewVlan + "\n" +
                 "description " + description + "\n" +
                 "encapsulation dot1Q " + NewVlan + "\n" +
                 "ip unnumbered " + loopback + "\n" +
