@@ -74,6 +74,13 @@ public class Exel {
     public static void setCellText (Cell cell, String text){
         cell.setCellValue(text);
     }
+    //Записать новое значение в ячейку
+
+    public static void setCellInt (Cell cell, String text){
+        int textCell = Integer.parseInt(text);
+        cell.setCellValue(textCell);
+    }
+    //Записать новое число в ячейку
 
     public static Cell searchCell (Workbook book, String city) {
 
@@ -91,7 +98,6 @@ public class Exel {
         }
         return cell1;
     }
-
 
     public static String getTextCell (Cell cellVlan) {
         String LastVlan = String.valueOf(Exel.getCellText(cellVlan));

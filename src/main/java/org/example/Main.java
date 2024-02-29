@@ -29,6 +29,7 @@ public class Main {
         NewIP = ip.installNewIP(City, book);
 
 
+
         if (!City.equals("Западная Якутия")|!City.equals("Костромская область")) {
             QNQVlan = city.getQnqVlan(City);
             //Получаем QNQ Vlan
@@ -44,12 +45,19 @@ public class Main {
         String NewVlan = vlan.getNewVlan(Vlan);
         // Получаем новый Vlan
 
+        exel.setCellInt(cellVlan, NewVlan);
+        // Записать новый Vlan
 
         System.out.println(NewIP);
         System.out.println("QNQ Vlan: " + QNQVlan);
         System.out.println("Последний Vlan: " + Vlan);
         System.out.println("Новый Vlan: " + NewVlan);
+
+        Cisco cisco = new Cisco();
+        cisco.requestResult(NewIP, QNQVlan, NewVlan);
+
         Exel.write(book, fis);
+        //Сохранить документ
 
     }
 }
