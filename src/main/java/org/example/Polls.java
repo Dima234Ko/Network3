@@ -102,7 +102,6 @@ public class Polls {
                 QNQVlan = Country.Кологрив.getVlan();
                 break;
             default:
-                QNQVlan = "Не найден";
                 break;
         }
 
