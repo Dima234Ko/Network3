@@ -54,9 +54,25 @@ public class Main {
             //Записать данные с Cisco
             System.out.println("");
 
+            while (true) {
 
+            System.out.println("Записать данные в Exel?" + "\n" +
+                    "1 - да" + "\n" + "2 - нет");
+            Scanner scanner = new Scanner(System.in);
+            String save = scanner.nextLine();
 
-            Exel.write(book, fis);
+            if (save.equals("1")) {
+                Exel.write(book, fis);
+                System.out.println("Данные записаны!");
+                break;
+            } else if (save.equals("2")) {
+                break;
+            } else
+                System.out.println("Введите верное значение");
+                continue;
+            }
+            System.out.println("");
+            //Сохранение данных в Exel
         }
         //Сохранить документ
 /*
