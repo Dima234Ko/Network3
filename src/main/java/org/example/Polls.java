@@ -8,7 +8,6 @@ public class Polls {
 
     public String city;
     boolean QNQ;
-    String NumberQNQ;
     String QNQVlan;
 
     public String getCity() {
@@ -26,7 +25,9 @@ public class Polls {
 
                 System.out.println("Уточните населенный пункт из списка");
                 System.out.println(Arrays.toString(Country.values()));
+                //Scanner scannerCountry = new Scanner(System.in);
                 Scanner scannerCountry = new Scanner(System.in,"windows-1251");
+
                 city = scannerCountry.nextLine();
 
                 /*Console console = System.console();

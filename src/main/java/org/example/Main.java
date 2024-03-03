@@ -17,41 +17,47 @@ public class Main {
 
     public static void main(String[] args) {
         while (true) {
-        Exel exel = new Exel();
-        book = exel.getBook();
-        fis = exel.getFis();
+            Exel exel = new Exel();
+            book = exel.getBook();
+            fis = exel.getFis();
 
-        Polls city = new Polls();
-        City = city.getCity();
+            Polls city = new Polls();
+            City = city.getCity();
 
-        IP ip = new IP();
-        NewIP = ip.installNewIP(City, book);
+            IP ip = new IP();
+            NewIP = ip.installNewIP(City, book);
 
-        if (!City.equals("Западная Якутия")&!City.equals("Костромская область")) {
-            QNQVlan = city.getQnqVlan(City);
-            //Получаем QNQ Vlan
-        }
+            if (!City.equals("Западная Якутия") & !City.equals("Костромская область")) {
+                QNQVlan = city.getQnqVlan(City);
+                //Получаем QNQ Vlan
+            }
 
-        Cell cellVlan = exel.searchCell(book,City);
-        // Получаем Ячейку с Vlan
+            Cell cellVlan = exel.searchCell(book, City);
+            // Получаем Ячейку с Vlan
 
-        String Vlan = Exel.getTextCell(cellVlan);
-        // Получаем последний использованный Vlan из таблицы
+            String Vlan = Exel.getTextCell(cellVlan);
+            // Получаем последний использованный Vlan из таблицы
 
-        Vlan vlan = new Vlan();
-        String NewVlan = vlan.getNewVlan(Vlan);
-        // Получаем новый Vlan
+            Vlan vlan = new Vlan();
+            String NewVlan = vlan.getNewVlan(Vlan);
+            // Получаем новый Vlan
 
-        exel.setCellInt(cellVlan, NewVlan);
-        // Записать новый Vlan
+            exel.setCellInt(cellVlan, NewVlan);
+            // Записать новый Vlan
 
             Cisco cisco = new Cisco();
             cisco.requestResult(NewIP, QNQVlan, NewVlan, City);
             //Сформировать команды Cisco
             System.out.println("");
 
-        Exel.write(book, fis);}
+            cisco.fillInTheDetails(NewIP, QNQVlan, NewVlan, City);
+            //Записать данные с Cisco
+            System.out.println("");
 
+
+
+            Exel.write(book, fis);
+        }
         //Сохранить документ
 /*
         System.out.println(NewIP);
